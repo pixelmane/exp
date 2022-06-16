@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 let rowSize = 10;
 export class Squares extends  React.Component {
     constructor(props){
