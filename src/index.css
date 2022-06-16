@@ -1,5 +1,7 @@
 body {
+  box-sizing: content-box;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +13,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  color: green;
+}
+#board {
+  display: flex;
+
+  flex-wrap: wrap;
+  
+  box-sizing: border-box;
+  background-color: bisque;
+}
+.square {
+  
+  background-color: aquamarine;
+  padding: 0px;
+}
+
+#container {
+  display: flex;
+  
+}
+#controls {
+  font-family: 'Press Start 2P', monospace;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: antiquewhite;
+}
+#board button {
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  border: none;
+  box-sizing: border-box;
+}
+#title {
+  width: 100%;
+  
+ 
+  height: 30px;
+  text-align: center;
+}
+#title h1 {
+  font-size: 1.5vw;
+  border: 3px solid black;
+  padding: 5px; 
+  border-radius: 10px;
+  margin: 5px 15px;
+}
+ #colorContainer {
+  justify-content:center;
+  background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 5px 15px;
+  width: 85%;
+  height: auto;
+  padding-bottom: 10px;
+ }
+ #gridSize {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 5px 15px;
+ }
+ #gridSize h2 {
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+ }
+#controls h2 {
+  font-size: 1.5vw;
+  
+}
+ #colorSelect {
+  width: 80%;
+  
+  height: 70%;
+ }
