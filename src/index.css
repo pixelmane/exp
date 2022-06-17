@@ -41,8 +41,11 @@ h1 {
   font-family: 'Press Start 2P', monospace;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   justify-content: center;
+ 
   background-color: antiquewhite;
+  border: 3px black solid;
   
 }
 #board button {
@@ -62,7 +65,7 @@ h1 {
 
 #title {
   width: 100%;
-  
+  margin: 5px 15px;
  
   height: 30px;
   text-align: center;
@@ -72,7 +75,7 @@ h1 {
   border: 3px solid black;
   padding: 5px; 
   border-radius: 10px;
-  margin: 5px 15px;
+  
 }
  #colorContainer {
   justify-content:center;
@@ -83,18 +86,23 @@ h1 {
   border: 3px solid black;
   border-radius: 10px;
   margin: 5px 15px;
-  width: 85%;
-  height: auto;
+  width: 100%;
+  height: fit-content;
   padding-bottom: 10px;
+  margin-top: 15px;
+ }
+ #colorContainer h2 {
+  
+ 
  }
  #gridSize {
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   justify-content: space-around;
   border: 3px solid black;
   border-radius: 10px;
   margin: 5px 15px;
-  height: 150px;
+  height: fit-content;
   align-items: center;
  }
  #gridSize button {
@@ -103,11 +111,11 @@ h1 {
   height: auto;
   
   
-  width: 15%;
+  width: 100%;
   color: black;
   background-color: azure;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 3px solid black;
+  
   font-size: 1.15vw;
  }
  h3 {
@@ -127,14 +135,20 @@ h1 {
  #colorSelect {
   width: 80%;
   border-radius: 10px;
-  height: 70%;
+  height: 50px;
  }
 
  #gridToggle {
   background-color: aliceblue;
-  width: 90%;
+  width: 100%;
   border-radius: 10px;
   height: 35px;
   align-self:flex-end;
-  margin-bottom: 20px;
+  margin: 5px 15px;
  }
+@media only screen and (maxwidth = 920px){
+  #controls {
+    width: 100px;
+  }
+}
+ 

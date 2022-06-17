@@ -49,6 +49,13 @@ export class Squares extends  React.Component {
         })
     }
     handleSize(e){
+        let sizeArray = document.getElementsByClassName('sizing')
+        for(let t = 0; t < sizeArray.length; t++){
+            sizeArray[t].style.backgroundColor = 'white';
+            sizeArray[t].style.color = 'black'
+        }
+        e.target.style.backgroundColor = 'black'
+        e.target.style.color = 'white'
         let reSize = e.target.value;
         console.log(reSize)
         rowSize = reSize
@@ -89,8 +96,13 @@ export class Squares extends  React.Component {
                         <input id="colorSelect" onChange={this.handleColor} type='color' ></input>
                     </div>  
                     <div id='gridSize'>
-                        <h2>Grid Size:</h2>
-                        <button onClick={this.handleSize}  value={10}><h3>10</h3><h3>x</h3><h3>10</h3></button><button onClick={this.handleSize}  value={20}><h3>20</h3><h3>x</h3><h3>20</h3></button><button onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button><button onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button><button onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button></div>
+                        
+                        <button style={{backgroundColor: 'black', color: 'white'}} className="sizing" onClick={this.handleSize}  value={10}><h3>10</h3><h3>x</h3><h3>10</h3></button>
+                        <button className="sizing" onClick={this.handleSize}  value={20}><h3>20</h3><h3>x</h3><h3>20</h3></button>
+                        <button className="sizing" onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button>
+                        <button className="sizing" onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button>
+                        <button className="sizing" onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button>
+                        </div>
                     <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
                     
                 </div>
@@ -123,8 +135,13 @@ function convertSize () {
     let size2 = window.innerWidth;
     document.getElementById('board').style.height = `${size}px`
     document.getElementById('board').style.width = `${size}px`
+    console.log(size2)
+    if(size2 < 920){
+        document.getElementById('controls').style.width = `200px`
+
+    } else {
     document.getElementById('controls').style.width = `${size/2}px`
-    
+    }
     let sizeArray = document.getElementsByClassName('square')
     for (let j = 0; j < sizeArray.length; j++){
         sizeArray[j].style.width = `${size/rowSize}px`
