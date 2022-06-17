@@ -23,6 +23,7 @@ export class Squares extends  React.Component {
             colorArray: colorArray
         })
     }
+  
     handleTouchMove(e) {
         e.preventDefault()
         let ouch = e.changedTouches[0];
@@ -75,8 +76,8 @@ export class Squares extends  React.Component {
     render() {
         return (
             <div>
-                <div id='container'>
-                <div onTouchMove={this.handleTouchMove} id="board">
+                <div id='container' draggable="false">
+                <div onTouchMove={this.handleTouchMove} id="board" draggable="false">
                 <Square gridToggle={this.state.grid} colorArray={this.state.colorArray} />
                 </div>
                 <div id='controls'>
@@ -85,7 +86,7 @@ export class Squares extends  React.Component {
                     </div>
                     <div id="colorContainer">
                         <h2>Color:</h2>
-                        <input id="colorSelect" onChange={this.handleColor} type='color' value='black'></input>
+                        <input id="colorSelect" onChange={this.handleColor} type='color' ></input>
                     </div>  
                     <div id='gridSize'>
                         <h2>Grid Size:</h2>
