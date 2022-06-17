@@ -80,11 +80,31 @@ h1 {
  #gridSize {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   border: 3px solid black;
   border-radius: 10px;
   margin: 5px 15px;
+  height: 100px;
+  align-items: center;
  }
+ #gridSize button {
+  display:flex;
+  flex-direction: column;
+  height: auto;
+  
+  
+  width: 15%;
+  color: black;
+  background-color: azure;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1.15vw;
+ }
+ h3 {
+  touch-action: none;
+  margin: 0px;
+  pointer-events: none;
+}
  #gridSize h2 {
   width: 100%;
   margin-top: 10px;
@@ -98,4 +118,13 @@ h1 {
   width: 80%;
   border-radius: 10px;
   height: 70%;
+ }
+
+ #gridToggle {
+  background-color: aliceblue;
+  width: 90%;
+  border-radius: 10px;
+  height: 35px;
+  align-self:flex-end;
+  margin-bottom: 20px;
  }

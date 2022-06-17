@@ -90,9 +90,9 @@ export class Squares extends  React.Component {
                     </div>  
                     <div id='gridSize'>
                         <h2>Grid Size:</h2>
-                        <button onClick={this.handleSize}  value={10}>10x10</button><button onClick={this.handleSize}  value={20}>20x20</button><button onClick={this.handleSize}  value={30}>30x30</button><button onClick={this.handleSize}  value={40}>40x40</button><button onClick={this.handleSize}  value={50}>50x50</button></div>
-                    <button id='gridToggle' onClick={this.handleToggle}>Grid Toggle</button>
-                    <h1>new font</h1>
+                        <button onClick={this.handleSize}  value={10}><h3>10</h3><h3>x</h3><h3>10</h3></button><button onClick={this.handleSize}  value={20}><h3>20</h3><h3>x</h3><h3>20</h3></button><button onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button><button onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button><button onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button></div>
+                    <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
+                    
                 </div>
                 </div>                
             </div>
