@@ -3,7 +3,11 @@ import { Squares } from './components/squares'
 let tilted = window.innerHeight < window.innerWidth
 
 window.ondragstart = function() { return false; }
+function preventBehavior(e) {
+  e.preventDefault(); 
+};
 
+document.addEventListener("touchmove", preventBehavior, {passive: false});
 class App extends React.Component {
  
   render() {
