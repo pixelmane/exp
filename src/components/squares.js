@@ -104,7 +104,7 @@ export class Squares extends  React.Component {
     }
     componentDidUpdate(){
         document.addEventListener('DOMContentLoaded', convertSize())
-       //window.addEventListener('resize', convertSize())
+       window.addEventListener('resize', convertSize())
     }
 }
 

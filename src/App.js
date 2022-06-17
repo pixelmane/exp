@@ -7,8 +7,8 @@ function preventBehavior(e) {
   e.preventDefault(); 
 };
 
-document.addEventListener("touchmove", preventBehavior, {passive: false});
-class App extends React.Component {
+//document.addEventListener("touchmove", preventBehavior, {passive: false});
+//class App extends React.Component {
  
   render() {
     return (
