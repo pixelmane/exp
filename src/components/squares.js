@@ -4,7 +4,7 @@ export class Squares extends  React.Component {
     constructor(props){
         super(props);
         this.state = {
-            colorArray: new Array(rowSize * rowSize).fill('blue'),
+            colorArray: new Array(rowSize * rowSize).fill('white'),
             numberOfSquares: rowSize * rowSize,
             myColor: 'black',
             grid: '1px dashed grey',
