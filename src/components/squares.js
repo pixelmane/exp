@@ -123,7 +123,7 @@ function convertSize () {
     let size2 = window.innerWidth;
     document.getElementById('board').style.height = `${size}px`
     document.getElementById('board').style.width = `${size}px`
-    document.getElementById('controls').style.width = `${size2 - size}px`
+    document.getElementById('controls').style.width = `${size/2}px`
     
     let sizeArray = document.getElementsByClassName('square')
     for (let j = 0; j < sizeArray.length; j++){

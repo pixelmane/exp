@@ -20,7 +20,7 @@ h1 {
 }
 #board {
   display: flex;
-
+  
   flex-wrap: wrap;
   
   box-sizing: border-box;
@@ -34,6 +34,7 @@ h1 {
 
 #container {
   display: flex;
+  justify-content: center;
   
 }
 #controls {
@@ -42,6 +43,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   background-color: antiquewhite;
+  
 }
 #board button {
   padding: 0;
