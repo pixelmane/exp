@@ -1,6 +1,9 @@
 import React from 'react'
 import { Squares } from './components/squares'
 let tilted = window.innerHeight < window.innerWidth
+
+window.ondragstart = function() { return false; }
+
 class App extends React.Component {
  
   render() {
