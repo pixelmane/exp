@@ -87,7 +87,7 @@ export class Squares extends  React.Component {
         //let colorArray = this.state.colorArray
         this.setState({
             numberOfSquares:  total,
-            colorArray: new Array(total).fill('white'),
+            colorArray: new Array(total).fill('transparent'),
             colorArray2: new Array(total).fill('white'),
             grid: '1px dashed grey',
             myBorderRadius: '0%'
