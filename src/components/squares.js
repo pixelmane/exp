@@ -5,18 +5,24 @@ export class Squares extends  React.Component {
         super(props);
         this.state = {
             colorArray: new Array(rowSize * rowSize).fill('transparent'),
+            colorArray2: new Array(rowSize * rowSize).fill('white'),
             numberOfSquares: rowSize * rowSize,
             myColor: 'black',
+            fullBackground: 'white',
+            myBackgroundColor: 'rgb(256,256,256)',
             myBorderRadius: '0%',
             grid: '1px dashed grey',
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleTouchMove = this.handleTouchMove.bind(this)
         this.handleChange = this.handleChange.bind(this);
+        
         this.handleColor = this.handleColor.bind(this)
         this.handleSize = this.handleSize.bind(this)
         this.handleToggle = this.handleToggle.bind(this)
         this.handleTipChange = this.handleTipChange.bind(this)
+        this.handleBackground = this.handleBackground.bind(this);
+        this.handleFullBackground = this.handleFullBackground.bind(this);
     }
     handleClick(){
         let colorArray = this.state.colorArray
@@ -33,17 +39,26 @@ export class Squares extends  React.Component {
         let y;
         x = ouch.clientX;
         y = ouch.clientY;
+        
         let zzz = document.elementFromPoint(x,y);
-        zzz.style.borderRadius = this.state.myBorderRadius
+        
+       
         this.handleChange(zzz.value)
+       if(zzz.className === 'square'){
+         zzz.style.borderRadius = this.state.myBorderRadius
+       }
     }
     handleChange(changeMe){
         let colorArray = this.state.colorArray
+        let colorArray2 = this.state.colorArray2
         colorArray[changeMe] = this.state.myColor;
+        colorArray2[changeMe] = this.state.myBackgroundColor
         this.setState({
             colorArray: colorArray,
+            colorArray2: colorArray2,
         })
     }
+  
     handleColor(e){
         let newColor = e.target.value;
         this.setState({
@@ -73,6 +88,7 @@ export class Squares extends  React.Component {
         this.setState({
             numberOfSquares:  total,
             colorArray: new Array(total).fill('white'),
+            colorArray2: new Array(total).fill('white'),
             grid: '1px dashed grey',
             myBorderRadius: '0%'
         })
@@ -96,37 +112,67 @@ export class Squares extends  React.Component {
             myBorderRadius: change,
         })
         document.getElementById('tipButton').style.borderRadius = change;
+        document.getElementById('sample').style.borderRadius = change;
+    }
+    handleFullBackground(e){
+        let background = e.target.value;
+        let colorMe = document.getElementsByClassName('square2')
+        for(let i = 0; i < colorMe.length; i++){
+            colorMe[i].style.backgroundColor = e.target.value;
+        }
+        this.setState({
+            myBackgroundColor: background,
+        })
+    }
+    handleBackground(e) {
+    
+        let background = e.target.value;
+        document.getElementById('backgroundButton').style.backgroundColor = background
+        this.setState({
+            myBackgroundColor: background,
+        })
     }
     render() {
         return (
             <div>
                 <div id='container' draggable="false">
-                <div onTouchMove={this.handleTouchMove} id="board" draggable="false">
-                <Square gridToggle={this.state.grid} colorArray={this.state.colorArray} />
-                </div>
-                <div id='controls'>
-                    <div id="title">
-                        <h1>RetroArtMuseum</h1>
-                    </div>
-                    <div id="colorContainer">
-                        <h2>Color:</h2>
-                        <input id="colorSelect" onChange={this.handleColor} type='color' ></input>
-                    </div>  
-                    <div id='gridSize'>
+             <div id='testCont'>   
+                    <div onTouchMove={this.handleTouchMove} id="board" draggable="false">
                         
-                        <button style={{backgroundColor: 'black', color: 'white'}} className="sizing" onClick={this.handleSize}  value={10}><h3>10</h3><h3>x</h3><h3>10</h3></button>
-                        <button className="sizing" onClick={this.handleSize}  value={20}><h3>20</h3><h3>x</h3><h3>20</h3></button>
-                        <button className="sizing" onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button>
-                        <button className="sizing" onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button>
-                        <button className="sizing" onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button>
+                        <Square gridToggle={this.state.grid} colorArray={this.state.colorArray} />
+                    </div>
+                    <div id='boardBack' onTouchMove={this.handleTouchMove}>
+                        <Square2 gridToggle={this.state.grid}  colorArray2={this.state.colorArray2} />
+                    </div>
+             </div>       
+                    <div id='controls'>
+                        <div id="title">
+                            <h1>RetroArtMuseum</h1>
                         </div>
-                        <div>
-                            <h2>Tip Style:</h2>
-                            <button id="tipButton" onClick={this.handleTipChange}></button>
+                        <div id="colorContainer">
+                            <h2>Color:</h2>
+                            <input id="colorSelect" onChange={this.handleColor} type='color' ></input>
+                        </div>  
+                        <div id='gridSize'>
+                        
+                            <button style={{backgroundColor: 'black', color: 'white'}} className="sizing" onClick={this.handleSize}  value={10}><h3>10</h3><h3>x</h3><h3>10</h3></button>
+                            <button className="sizing" onClick={this.handleSize}  value={20}><h3>20</h3><h3>x</h3><h3>20</h3></button>
+                            <button className="sizing" onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button>
+                            <button className="sizing" onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button>
+                            <button className="sizing" onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button>
+                            </div>
+                            <div id='tipCont'>
+                                
+                                <div id='sample' style={{backgroundColor: this.state.myColor}}></div>
+                                <div id='sample2' style={{backgroundColor: this.state.myBackgroundColor}}></div>
+                                <button id="tipButton" style={{backgroundColor: this.state.myColor}} onClick={this.handleTipChange}></button>
+                                <input type='color'  style={{backgroundColor: this.state.myBackgroundColor}} id="backgroundButton" onChange={this.handleBackground}></input>
+                                <input type='color' onChange={this.handleFullBackground}></input>
                         </div>
                     <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
                     
                 </div>
+                
                 </div>                
             </div>
         )
@@ -134,13 +180,22 @@ export class Squares extends  React.Component {
     componentDidMount(){
         document.addEventListener('DOMContentLoaded', convertSize())
        window.addEventListener('resize', convertSize())
+       
     }
     componentDidUpdate(){
         document.addEventListener('DOMContentLoaded', convertSize())
        window.addEventListener('resize', convertSize())
     }
 }
-
+const Square2 = (props) => {
+    let square2Array = [];
+    for (let i = 0; i < props.colorArray2.length; i++){
+        square2Array.push( <button value={i} className="square2" style={{backgroundColor: props.colorArray2[i], border: 'none', borderRadius: '0%'}}></button>)
+    }
+    return (
+        [square2Array]
+    )
+}
 const Square = (props) => {
    
     let squareArray = []
@@ -156,6 +211,8 @@ function convertSize () {
     let size2 = window.innerWidth;
     document.getElementById('board').style.height = `${size}px`
     document.getElementById('board').style.width = `${size}px`
+    document.getElementById('boardBack').style.height = `${size}px`
+    document.getElementById('boardBack').style.width = `${size}px`
     console.log(size2)
     if(size2 < 920){
         document.getElementById('controls').style.width = `200px`
@@ -168,4 +225,10 @@ function convertSize () {
         sizeArray[j].style.width = `${size/rowSize}px`
         sizeArray[j].style.height = `${size/rowSize}px`
     }
+    let sizeArray2 = document.getElementsByClassName('square2')
+    for (let p = 0; p < sizeArray2.length; p++){
+        sizeArray2[p].style.width = `${size/rowSize}px`
+        sizeArray2[p].style.height = `${size/rowSize}px`
+    }
+    
 }

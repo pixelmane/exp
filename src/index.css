@@ -18,15 +18,42 @@ code {
 h1 {
   color: green;
 }
-#board {
+#testCont {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  
+}
+
+#boardBack {
+  
+ 
+  z-index: 1;
+  
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  
   display: flex;
-  
   flex-wrap: wrap;
-  
   box-sizing: border-box;
-  background-color: white;
+ 
+
+}
+#board {
+  
+  z-index: 2;
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  flex-wrap: wrap;
+  display: flex;
+  box-sizing: border-box;
+  background-color: transparent;
 }
 .square {
+  
+  background-color: aquamarine;
+  padding: 0px;
+}
+.square2 {
   
   background-color: aquamarine;
   padding: 0px;
@@ -62,6 +89,21 @@ h1 {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+#boardBack button {
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  border: none;
+  box-sizing: border-box;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 
 #title {
   width: 100%;
@@ -95,11 +137,43 @@ h1 {
   
  
  }
+ #sample {
+  grid-row: 1 / 1;
+  grid-column: 1 / 4;
+  z-index: 3;
+  height: 100px;
+  width: 100px; border-radius: 0%;
+  background-color: black;
+  justify-self: center ;
+ }
+ #sample2 {
+  grid-row: 1 / 1;
+  grid-column: 1 / 4;
+  z-index: 2;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  justify-self: center;
+}
+ #tipCont {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  grid-template: 1fr 1fr/ 1fr 1fr 1fr;
+ }
  #tipButton {
   height: 50px;
   width: 50px;
   border-radius: 0px;
   background-color: black;
+  border: none;
+ }
+ #backgroundButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 0px;
+  background-color: white;
+  border: none;
  }
  #gridSize {
   display: flex;
