@@ -4,9 +4,10 @@ export class Squares extends  React.Component {
     constructor(props){
         super(props);
         this.state = {
-            colorArray: new Array(rowSize * rowSize).fill('white'),
+            colorArray: new Array(rowSize * rowSize).fill('transparent'),
             numberOfSquares: rowSize * rowSize,
             myColor: 'black',
+            myBorderRadius: '0%',
             grid: '1px dashed grey',
         }
         this.handleClick = this.handleClick.bind(this)
@@ -15,6 +16,7 @@ export class Squares extends  React.Component {
         this.handleColor = this.handleColor.bind(this)
         this.handleSize = this.handleSize.bind(this)
         this.handleToggle = this.handleToggle.bind(this)
+        this.handleTipChange = this.handleTipChange.bind(this)
     }
     handleClick(){
         let colorArray = this.state.colorArray
@@ -32,7 +34,7 @@ export class Squares extends  React.Component {
         x = ouch.clientX;
         y = ouch.clientY;
         let zzz = document.elementFromPoint(x,y);
-        
+        zzz.style.borderRadius = this.state.myBorderRadius
         this.handleChange(zzz.value)
     }
     handleChange(changeMe){
@@ -52,10 +54,16 @@ export class Squares extends  React.Component {
         let sizeArray = document.getElementsByClassName('sizing')
         for(let t = 0; t < sizeArray.length; t++){
             sizeArray[t].style.backgroundColor = 'white';
-            sizeArray[t].style.color = 'black'
+            sizeArray[t].style.color = 'black';
+           
         }
         e.target.style.backgroundColor = 'black'
         e.target.style.color = 'white'
+        let borderArray = document.getElementsByClassName('square')
+        for ( let j = 0; j < borderArray.length; j++){
+            borderArray[j].style.borderRadius = '0%';
+        }
+        document.getElementById('tipButton').style.borderRadius = '0%'
         let reSize = e.target.value;
         console.log(reSize)
         rowSize = reSize
@@ -66,6 +74,7 @@ export class Squares extends  React.Component {
             numberOfSquares:  total,
             colorArray: new Array(total).fill('white'),
             grid: '1px dashed grey',
+            myBorderRadius: '0%'
         })
        
     }
@@ -80,6 +89,14 @@ export class Squares extends  React.Component {
             })
         }
        }
+       handleTipChange(){
+        let change = this.state.myBorderRadius === '0%' ? '50%' : '0%'
+        
+        this.setState({
+            myBorderRadius: change,
+        })
+        document.getElementById('tipButton').style.borderRadius = change;
+    }
     render() {
         return (
             <div>
@@ -102,6 +119,10 @@ export class Squares extends  React.Component {
                         <button className="sizing" onClick={this.handleSize}  value={30}><h3>30</h3><h3>x</h3><h3>30</h3></button>
                         <button className="sizing" onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button>
                         <button className="sizing" onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button>
+                        </div>
+                        <div>
+                            <h2>Tip Style:</h2>
+                            <button id="tipButton" onClick={this.handleTipChange}></button>
                         </div>
                     <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
                     

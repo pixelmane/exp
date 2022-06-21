@@ -24,7 +24,7 @@ h1 {
   flex-wrap: wrap;
   
   box-sizing: border-box;
-  background-color: bisque;
+  background-color: white;
 }
 .square {
   
@@ -94,6 +94,12 @@ h1 {
  #colorContainer h2 {
   
  
+ }
+ #tipButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 0px;
+  background-color: black;
  }
  #gridSize {
   display: flex;
