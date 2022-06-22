@@ -45,7 +45,8 @@ export class Squares extends  React.Component {
        
         this.handleChange(zzz.value)
        if(zzz.className === 'square'){
-         zzz.style.borderRadius = this.state.myBorderRadius
+         zzz.style.borderRadius = this.state.myBorderRadius;
+         
        }
     }
     handleChange(changeMe){
@@ -77,6 +78,7 @@ export class Squares extends  React.Component {
         let borderArray = document.getElementsByClassName('square')
         for ( let j = 0; j < borderArray.length; j++){
             borderArray[j].style.borderRadius = '0%';
+            this.state.colorArray2[j] = 'white'
         }
         document.getElementById('tipButton').style.borderRadius = '0%'
         let reSize = e.target.value;
@@ -88,7 +90,8 @@ export class Squares extends  React.Component {
         this.setState({
             numberOfSquares:  total,
             colorArray: new Array(total).fill('transparent'),
-            colorArray2: new Array(total).fill('white'),
+            colorArray2: new Array(total).fill(this.state.myBackgroundColor),
+            
             grid: '1px dashed grey',
             myBorderRadius: '0%'
         })
@@ -105,14 +108,27 @@ export class Squares extends  React.Component {
             })
         }
        }
-       handleTipChange(){
-        let change = this.state.myBorderRadius === '0%' ? '50%' : '0%'
+       handleTipChange(e){
+        if( e.target.value === '0%'){
+            this.setState({
+                myBorderRadius: e.target.value,
+            })
+            
+            
+            document.getElementById('tipButton2').style.border = 'none'
+            document.getElementById('tipButton2').style.opacity = '.3'
+            document.getElementById('tipButton').style.opacity = '1'
+        } else {
+            this.setState({
+                myBorderRadius: e.target.value,
+            })
+            
+            document.getElementById('tipButton2').style.opacity = '1'
+            document.getElementById('tipButton').style.opacity = '.3'
+            document.getElementById('tipButton').style.border = 'none'
+        }
+       
         
-        this.setState({
-            myBorderRadius: change,
-        })
-        document.getElementById('tipButton').style.borderRadius = change;
-        document.getElementById('sample').style.borderRadius = change;
     }
     handleFullBackground(e){
         let background = e.target.value;
@@ -149,9 +165,13 @@ export class Squares extends  React.Component {
                         <div id="title">
                             <h1>RetroArtMuseum</h1>
                         </div>
-                        <div id="colorContainer">
+                        <div className="colorContainer">
                             <h2>Color:</h2>
-                            <input id="colorSelect" onChange={this.handleColor} type='color' ></input>
+                            <input className="colorSelect" onChange={this.handleColor} type='color' ></input>
+                        </div>  
+                        <div className="colorContainer">
+                            <h2 id="backgroundLabel">Background:</h2>
+                            <input className="colorSelect" type='color' onChange={this.handleFullBackground}></input>
                         </div>  
                         <div id='gridSize'>
                         
@@ -161,13 +181,12 @@ export class Squares extends  React.Component {
                             <button className="sizing" onClick={this.handleSize}  value={40}><h3>40</h3><h3>x</h3><h3>40</h3></button>
                             <button className="sizing" onClick={this.handleSize}  value={50}><h3>50</h3><h3>x</h3><h3>50</h3></button>
                             </div>
-                            <div id='tipCont'>
-                                
-                                <div id='sample' style={{backgroundColor: this.state.myColor}}></div>
-                                <div id='sample2' style={{backgroundColor: this.state.myBackgroundColor}}></div>
-                                <button id="tipButton" style={{backgroundColor: this.state.myColor}} onClick={this.handleTipChange}></button>
-                                <input type='color'  style={{backgroundColor: this.state.myBackgroundColor}} id="backgroundButton" onChange={this.handleBackground}></input>
-                                <input type='color' onChange={this.handleFullBackground}></input>
+                            <div className="colorContainer" style={{paddingBottom: '0px'}}>
+                                <h2>Tip Shape:</h2>
+                                <button id="tipButton" value='0%' style={{backgroundColor: this.state.myColor}} onClick={this.handleTipChange}></button>
+                                <button id="tipButton2" value='50%' style={{backgroundColor: this.state.myColor, borderRadius: '50%'}} onClick={this.handleTipChange}></button>
+                               
+                              
                         </div>
                     <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
                     
@@ -209,26 +228,26 @@ const Square = (props) => {
 function convertSize () {
     let size = window.innerHeight;
     let size2 = window.innerWidth;
-    document.getElementById('board').style.height = `${size}px`
-    document.getElementById('board').style.width = `${size}px`
-    document.getElementById('boardBack').style.height = `${size}px`
-    document.getElementById('boardBack').style.width = `${size}px`
+    document.getElementById('board').style.height = `${size-10}px`
+    document.getElementById('board').style.width = `${size-10}px`
+    document.getElementById('boardBack').style.height = `${size-10}px`
+    document.getElementById('boardBack').style.width = `${size-10}px`
     console.log(size2)
     if(size2 < 920){
         document.getElementById('controls').style.width = `200px`
 
     } else {
-    document.getElementById('controls').style.width = `${size/2}px`
+    document.getElementById('controls').style.width = `${(size-10)/2}px`
     }
     let sizeArray = document.getElementsByClassName('square')
     for (let j = 0; j < sizeArray.length; j++){
-        sizeArray[j].style.width = `${size/rowSize}px`
-        sizeArray[j].style.height = `${size/rowSize}px`
+        sizeArray[j].style.width = `${(size-10)/rowSize}px`
+        sizeArray[j].style.height = `${(size-10)/rowSize}px`
     }
     let sizeArray2 = document.getElementsByClassName('square2')
     for (let p = 0; p < sizeArray2.length; p++){
-        sizeArray2[p].style.width = `${size/rowSize}px`
-        sizeArray2[p].style.height = `${size/rowSize}px`
+        sizeArray2[p].style.width = `${(size-10)/rowSize}px`
+        sizeArray2[p].style.height = `${(size-10)/rowSize}px`
     }
     
 }

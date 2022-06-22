@@ -16,7 +16,7 @@ code {
 }
 
 h1 {
-  color: green;
+  color:black;
 }
 #testCont {
   display: grid;
@@ -62,6 +62,7 @@ h1 {
 #container {
   display: flex;
   justify-content: center;
+  background-color: black;
   
 }
 #controls {
@@ -71,7 +72,7 @@ h1 {
   align-content: flex-start;
   justify-content: center;
  
-  background-color: antiquewhite;
+  background-color: lightgrey;
   border: 3px black solid;
   
 }
@@ -107,8 +108,8 @@ h1 {
 
 #title {
   width: 100%;
-  margin: 5px 15px;
- 
+  margin: 5px 15px 22px 15px;
+  
   height: 30px;
   text-align: center;
 }
@@ -117,11 +118,11 @@ h1 {
   border: 3px solid black;
   padding: 5px; 
   border-radius: 10px;
-  
+  background-color: aliceblue;
 }
- #colorContainer {
+ .colorContainer {
   justify-content:center;
-  background-color: aqua;
+  background-color:aliceblue;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -131,30 +132,13 @@ h1 {
   width: 100%;
   height: fit-content;
   padding-bottom: 10px;
-  margin-top: 15px;
+  
  }
  #colorContainer h2 {
   
  
  }
- #sample {
-  grid-row: 1 / 1;
-  grid-column: 1 / 4;
-  z-index: 3;
-  height: 100px;
-  width: 100px; border-radius: 0%;
-  background-color: black;
-  justify-self: center ;
- }
- #sample2 {
-  grid-row: 1 / 1;
-  grid-column: 1 / 4;
-  z-index: 2;
-  height: 100px;
-  width: 100px;
-  background-color: white;
-  justify-self: center;
-}
+
  #tipCont {
   display: grid;
   width: 100%;
@@ -162,11 +146,21 @@ h1 {
   grid-template: 1fr 1fr/ 1fr 1fr 1fr;
  }
  #tipButton {
-  height: 50px;
-  width: 50px;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
   border-radius: 0px;
   background-color: black;
   border: none;
+ }
+ #tipButton2 {
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 0px;
+  background-color: black;
+  border: none;
+  opacity: .3;
  }
  #backgroundButton {
   height: 50px;
@@ -213,7 +207,7 @@ h1 {
   font-size: 1.5vw;
   
 }
- #colorSelect {
+ .colorSelect {
   width: 80%;
   border-radius: 10px;
   height: 50px;
