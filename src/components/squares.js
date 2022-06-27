@@ -77,8 +77,13 @@ export class Squares extends  React.Component {
         e.target.style.color = 'white'
         let borderArray = document.getElementsByClassName('square')
         for ( let j = 0; j < borderArray.length; j++){
+            let colorArray2 = this.state.colorArray2
+            colorArray2[j] = 'white';
             borderArray[j].style.borderRadius = '0%';
-            this.state.colorArray2[j] = 'white'
+            this.setState({
+                colorArray2: colorArray2,
+            })
+           
         }
         document.getElementById('tipButton').style.borderRadius = '0%'
         let reSize = e.target.value;
