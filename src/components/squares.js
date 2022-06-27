@@ -228,26 +228,26 @@ const Square = (props) => {
 function convertSize () {
     let size = window.innerHeight;
     let size2 = window.innerWidth;
-    document.getElementById('board').style.height = `${size-10}px`
-    document.getElementById('board').style.width = `${size-10}px`
-    document.getElementById('boardBack').style.height = `${size-10}px`
-    document.getElementById('boardBack').style.width = `${size-10}px`
+    document.getElementById('board').style.height = `${size}px`
+    document.getElementById('board').style.width = `${size}px`
+    document.getElementById('boardBack').style.height = `${size}px`
+    document.getElementById('boardBack').style.width = `${size}px`
     console.log(size2)
     if(size2 < 920){
         document.getElementById('controls').style.width = `200px`
 
     } else {
-    document.getElementById('controls').style.width = `${(size-10)/2}px`
+    document.getElementById('controls').style.width = `${size/2}px`
     }
     let sizeArray = document.getElementsByClassName('square')
     for (let j = 0; j < sizeArray.length; j++){
-        sizeArray[j].style.width = `${(size-10)/rowSize}px`
-        sizeArray[j].style.height = `${(size-10)/rowSize}px`
+        sizeArray[j].style.width = `${size/rowSize}px`
+        sizeArray[j].style.height = `${size/rowSize}px`
     }
     let sizeArray2 = document.getElementsByClassName('square2')
     for (let p = 0; p < sizeArray2.length; p++){
-        sizeArray2[p].style.width = `${(size-10)/rowSize}px`
-        sizeArray2[p].style.height = `${(size-10)/rowSize}px`
+        sizeArray2[p].style.width = `${size/rowSize}px`
+        sizeArray2[p].style.height = `${size/rowSize}px`
     }
     
 }
