@@ -12,6 +12,7 @@ export class Squares extends  React.Component {
             myBackgroundColor: 'rgb(256,256,256)',
             myBorderRadius: '0%',
             grid: '1px dashed grey',
+            gridButton: '2px dashed black',
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleTouchMove = this.handleTouchMove.bind(this)
@@ -100,16 +101,21 @@ export class Squares extends  React.Component {
             grid: '1px dashed grey',
             myBorderRadius: '0%'
         })
+        document.getElementById('tipButton2').style.opacity = '.3'
+            document.getElementById('tipButton').style.opacity = '1'
        
     }
     handleToggle(){
         if(this.state.grid === '1px dashed grey'){
+           
             this.setState({
                 grid: 'none',
+                gridButton: 'none',
             })
         } else {
             this.setState({
                 grid: '1px dashed grey',
+                gridButton: '2px dashed black'
             })
         }
        }
@@ -120,7 +126,7 @@ export class Squares extends  React.Component {
             })
             
             
-            document.getElementById('tipButton2').style.border = 'none'
+         
             document.getElementById('tipButton2').style.opacity = '.3'
             document.getElementById('tipButton').style.opacity = '1'
         } else {
@@ -130,7 +136,7 @@ export class Squares extends  React.Component {
             
             document.getElementById('tipButton2').style.opacity = '1'
             document.getElementById('tipButton').style.opacity = '.3'
-            document.getElementById('tipButton').style.border = 'none'
+           
         }
        
         
@@ -193,7 +199,7 @@ export class Squares extends  React.Component {
                                
                               
                         </div>
-                    <button id='gridToggle' style={{border: this.state.grid}} onClick={this.handleToggle}>Grid Toggle</button>
+                    <button id='gridToggle' style={{border: this.state.gridButton}} onClick={this.handleToggle}>Grid Toggle</button>
                     
                 </div>
                 

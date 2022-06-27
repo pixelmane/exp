@@ -62,7 +62,7 @@ h1 {
 #container {
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-color:antiquewhite;
   
 }
 #controls {
@@ -75,6 +75,10 @@ h1 {
   background-color: lightgrey;
   border: 3px black solid;
   
+}
+#testCont {
+  border: 2px solid black;
+
 }
 #board button {
   padding: 0;
