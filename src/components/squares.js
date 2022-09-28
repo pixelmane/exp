@@ -17,7 +17,7 @@ export class Squares extends  React.Component {
         this.handleClick = this.handleClick.bind(this)
         this.handleTouchMove = this.handleTouchMove.bind(this)
         this.handleChange = this.handleChange.bind(this);
-        
+        this.handlePrint = this.handlePrint.bind(this);
         this.handleColor = this.handleColor.bind(this)
         this.handleSize = this.handleSize.bind(this)
         this.handleToggle = this.handleToggle.bind(this)
@@ -159,6 +159,13 @@ export class Squares extends  React.Component {
             myBackgroundColor: background,
         })
     }
+    handlePrint(){
+        document.getElementById('logs').style.display = 'flex'
+        document.getElementById('logs').style.flexWrap = 'wrap'
+        document.getElementById('logs').style.width = '300px'
+
+        console.log(this.state.colorArray)
+    }
     render() {
         return (
             <div>
@@ -200,7 +207,8 @@ export class Squares extends  React.Component {
                               
                         </div>
                     <button id='gridToggle' style={{border: this.state.gridButton}} onClick={this.handleToggle}>Grid Toggle</button>
-                    
+                    <button onClick={this.handlePrint}>Get Logs</button>
+                    <div id='logs' style={{color: 'red', display: 'none'}}>{this.state.colorArray.join(',')}</div>
                 </div>
                 
                 </div>                
